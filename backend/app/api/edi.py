@@ -3,7 +3,7 @@ from app.models.cargo import CargoRequest, EDIMessage, DecodedCargoResponse, Car
 from app.core.edi_handler import generate_edi_message, parse_edi_message
 from fastapi.responses import JSONResponse
 
-router = APIRouter(prefix="/edi", tags=["EDI"])
+router = APIRouter(prefix="/edi")
 
 @router.post("/generate", response_model=EDIMessage)
 async def generate_edi(cargo_request: CargoRequest):

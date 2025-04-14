@@ -1,8 +1,18 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.routers import routers as api_router
+from app.api.routes import router as edi_router
 app = FastAPI(title="EDI Message Handler")
+
+@app.on_event("startup")
+async def print_routes():
+    from fastapi.routing import APIRoute
+    print("\n==== Registered Routes ====")
+    for route in app.routes:
+        if isinstance(route, APIRoute):
+            methods = ",".join(route.methods)
+            print(f"{methods:10s} -> {route.path}")
+    print("==== End Routes ====\n")
 
 # Configure CORS
 app.add_middleware(
@@ -14,8 +24,8 @@ app.add_middleware(
 )
 
 # Include API router
+app.include_router(edi_router, prefix="/api")
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
-app.include_router(api_router, prefix="/api")
 
 @app.get("/")
 async def root():
