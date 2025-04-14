@@ -5,7 +5,7 @@ def sanitize_input(value: str) -> str:
     """Sanitize input to only allow valid ASCII characters."""
     if not value:
         return ""
-    # Remove any characters outside ASCII 32-126, excluding [ and ]
+    # Remove any characters outside ASCII 32-126, including [ and ]
     return re.sub(r'[^\x20-\x7A]|\[|\]', '', value)
 
 def escape_special_chars(value: str) -> str:
@@ -56,6 +56,9 @@ def generate_edi_message(cargo_items: List[Dict[str, Any]]) -> str:
 
 def parse_edi_message(edi_message: str) -> List[Dict[str, Any]]:
     """Parse EDI message into cargo items."""
+    if not edi_message or not isinstance(edi_message, str):
+        raise Exception("Invalid EDI format")
+        
     cargo_items = []
     current_item = {}
 
@@ -88,5 +91,8 @@ def parse_edi_message(edi_message: str) -> List[Dict[str, Any]]:
 
     if current_item:
         cargo_items.append(current_item)
+
+    if not cargo_items:
+        raise Exception("Invalid EDI format")
 
     return cargo_items

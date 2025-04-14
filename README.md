@@ -1,6 +1,6 @@
 # EDI Message Handler
 
-A full-stack web application for generating and decoding EDI messages for cargo shipments.
+A full-stack web application for generating and decoding EDI (Electronic Data Interchange) messages for cargo shipments. This application provides a user-friendly interface for managing cargo shipment data and converting it to/from standard EDI formats.
 
 ## Project Structure
 
@@ -27,9 +27,18 @@ A full-stack web application for generating and decoding EDI messages for cargo 
 - Generate EDI messages from cargo details
 - Decode existing EDI messages
 - Support for multiple cargo items
-- Modern, responsive UI
+- Modern, responsive UI with Material-UI components
 - Input validation and error handling
 - Clean, maintainable code structure
+- Comprehensive API documentation
+- Real-time validation and feedback
+
+## Prerequisites
+
+- Python 3.8 or higher
+- Node.js 14 or higher
+- npm 6 or higher
+- Git
 
 ## Setup
 
@@ -83,6 +92,20 @@ Once the backend server is running, you can access the API documentation at:
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
 
+## Testing
+
+### Backend Tests
+```bash
+cd backend
+pytest
+```
+
+### Frontend Tests
+```bash
+cd frontend
+npm test
+```
+
 ## Technologies Used
 
 - Backend:
@@ -90,9 +113,23 @@ Once the backend server is running, you can access the API documentation at:
   - Python 3.8+
   - Pydantic
   - Uvicorn
+  - pytest
 
 - Frontend:
   - React
   - Material-UI
   - Axios
-  - React Hooks 
+  - React Hooks
+  - Jest
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details. 

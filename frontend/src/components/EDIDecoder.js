@@ -49,7 +49,7 @@ const EDIDecoder = ({ ediMessage, setEdiMessage, decodedItems, setDecodedItems }
       setValidationError('');
       setSuccess(false);
 
-      const response = await fetch('http://localhost:8000/api/decode-edi', {
+      const response = await fetch('http://localhost:8000/api/edi/decode', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: ediMessage }),
