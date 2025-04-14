@@ -95,7 +95,7 @@ const CopyableTextField = ({
         open={copied}
         autoHideDuration={2000}
         onClose={() => setCopied(false)}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         sx={{ position: 'absolute', top: 0, left: 0, right: 0 }}
       >
         <Alert
