@@ -3,8 +3,15 @@ import { Box, Paper, Tabs, Tab } from '@mui/material';
 import CargoForm from './CargoForm';
 import EDIDecoder from './EDIDecoder';
 
+/**
+ * Main component for handling EDI message generation and decoding
+ * Manages tab switching and maintains separate states for generate and decode functionalities
+ */
 const EDIMessageHandler = () => {
+  // Tab state management
   const [activeTab, setActiveTab] = useState('generate');
+
+  // Cargo form states
   const [cargoItems, setCargoItems] = useState([{
     cargo_type: 'FCL',
     number_of_packages: '',
@@ -12,6 +19,8 @@ const EDIMessageHandler = () => {
     master_bill_of_lading_number: '',
     house_bill_of_lading_number: '',
   }]);
+
+  // Separate states for generate and decode EDI messages
   const [generatedEdiMessage, setGeneratedEdiMessage] = useState('');
   const [decoderEdiMessage, setDecoderEdiMessage] = useState('');
   const [decodedItems, setDecodedItems] = useState([]);
@@ -20,8 +29,27 @@ const EDIMessageHandler = () => {
     setActiveTab(newValue);
   };
 
+  // Common styles for components
+  const tabStyles = {
+    '& .MuiTabs-indicator': {
+      display: 'none',
+    },
+    '& .MuiTab-root': {
+      minHeight: '40px',
+      borderRadius: 2,
+      mx: 0.5,
+      color: 'text.secondary',
+      '&.Mui-selected': {
+        color: 'text.primary',
+        bgcolor: 'background.paper',
+        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+      },
+    },
+  };
+
   return (
     <Box>
+      {/* Tab navigation */}
       <Paper 
         sx={{ 
           mb: 3,
@@ -38,22 +66,7 @@ const EDIMessageHandler = () => {
         <Tabs
           value={activeTab}
           onChange={handleTabChange}
-          sx={{
-            '& .MuiTabs-indicator': {
-              display: 'none',
-            },
-            '& .MuiTab-root': {
-              minHeight: '40px',
-              borderRadius: 2,
-              mx: 0.5,
-              color: 'text.secondary',
-              '&.Mui-selected': {
-                color: 'text.primary',
-                bgcolor: 'background.paper',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
-              },
-            },
-          }}
+          sx={tabStyles}
         >
           <Tab
             label="Generate EDI"
@@ -68,6 +81,7 @@ const EDIMessageHandler = () => {
         </Tabs>
       </Paper>
 
+      {/* Content container */}
       <Paper 
         elevation={0}
         sx={{ 

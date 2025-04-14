@@ -9,6 +9,10 @@ import {
 } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
+/**
+ * A reusable text field component with copy functionality
+ * Supports both read-only and editable modes
+ */
 const CopyableTextField = ({ 
   value, 
   rows = 10, 
@@ -22,6 +26,7 @@ const CopyableTextField = ({
 }) => {
   const [copied, setCopied] = useState(false);
 
+  // Handle copy to clipboard
   const handleCopy = () => {
     navigator.clipboard.writeText(value || '');
     setCopied(true);
@@ -65,6 +70,7 @@ const CopyableTextField = ({
         {...props}
       />
 
+      {/* Copy success notification */}
       <Snackbar
         open={copied}
         autoHideDuration={2000}
