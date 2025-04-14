@@ -26,10 +26,30 @@ const CopyableTextField = ({
 }) => {
   const [copied, setCopied] = useState(false);
 
-  // Handle copy to clipboard
+  // Handle copy to clipboard with fallback for HTTP
   const handleCopy = () => {
-    navigator.clipboard.writeText(value || '');
-    setCopied(true);
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(value || '').then(() => {
+        setCopied(true);
+      }).catch((err) => {
+        console.error('Clipboard copy failed:', err);
+      });
+    } else {
+      // Fallback method
+      const textarea = document.createElement('textarea');
+      textarea.value = value || '';
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        setCopied(true);
+      } catch (err) {
+        console.error('Fallback: Copy command failed', err);
+      }
+      document.body.removeChild(textarea);
+    }
   };
 
   return (
