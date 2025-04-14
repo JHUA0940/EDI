@@ -88,7 +88,7 @@ const CargoForm = ({ cargoItems, setCargoItems, ediMessage, setEdiMessage }) => 
 
     try {
       setAlert({ ...alert, show: false });
-      const response = await axios.post('http://localhost:8000/api/edi/generate', {
+      const response = await axios.post('/api/edi/generate', {
         items: cargoItems,
       });
       setEdiMessage(response.data.message);
