@@ -1,13 +1,13 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.routes import router as api_router
+from app.api.routers import routers as api_router
 app = FastAPI(title="EDI Message Handler")
 
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React default port
+    allow_origins=["*"],  # React default port
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
