@@ -40,7 +40,7 @@ EDI formats.
 
 ## Prerequisites
 
-- Python 3.8 or higher
+- Python 3.10 or higher
 - Node.js 14 or higher
 - npm 6 or higher
 
