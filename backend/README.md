@@ -6,8 +6,7 @@ This is the backend service for the EDI Message Handler application, built with 
 
 - RESTful API endpoints for EDI operations
 - Input validation using Pydantic models
-- Comprehensive API documentation with Swagger UI and ReDoc
-- Error handling and logging
+- Comprehensive API documentation with Swagger UI
 - Unit tests with pytest
 - Fast and efficient message processing
 
@@ -21,7 +20,7 @@ This is the backend service for the EDI Message Handler application, built with 
 
 1. Create a virtual environment:
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
@@ -42,11 +41,9 @@ The server will start at http://localhost:8000
 ## API Endpoints
 
 ### EDI Operations
-- `POST /api/generate-edi`: Generate EDI message from cargo items
-- `POST /api/decode-edi`: Decode EDI message into cargo items
+- `POST /api/edi/generate`: Generate EDI message from cargo items
+- `POST /api/edi/decode`: Decode EDI message into cargo items
 
-### Health Check
-- `GET /health`: Check server health status
 
 ## API Documentation
 
@@ -73,9 +70,7 @@ backend/
 ├── app/
 │   ├── api/         # API routes and endpoints
 │   ├── core/        # Core functionality and configuration
-│   ├── models/      # Database and data models
-│   ├── schemas/     # Pydantic schemas for validation
-│   └── utils/       # Utility functions
+│   ├── models/      # Data models
 └── tests/           # Test files
 ```
 
@@ -85,21 +80,3 @@ The API includes comprehensive error handling for:
 - Invalid input data
 - Server errors
 - Resource not found
-- Authentication errors (if implemented)
-
-## Logging
-
-The application uses Python's built-in logging module with the following log levels:
-- DEBUG: Detailed information for debugging
-- INFO: General information about program execution
-- WARNING: Warning messages for potential issues
-- ERROR: Error messages for serious problems
-- CRITICAL: Critical errors that may cause the program to stop
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request 

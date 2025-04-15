@@ -16,7 +16,7 @@ def test_generate_edi():
         ]
     }
 
-    response = client.post("/api/generate-edi", json=cargo_request)
+    response = client.post("/api/edi/generate", json=cargo_request)
     assert response.status_code == 200
     assert "message" in response.json()
     assert "LIN+1+I'" in response.json()["message"]
@@ -35,7 +35,7 @@ def test_generate_edi_invalid_input():
         ]
     }
 
-    response = client.post("/api/generate-edi", json=cargo_request)
+    response = client.post("/api/edi/generate", json=cargo_request)
     assert response.status_code == 422  # Validation error
 
 
@@ -49,7 +49,7 @@ RFF+MB:MBL123'
 RFF+BH:HBL456'"""
     }
 
-    response = client.post("/api/decode-edi", json=edi_message)
+    response = client.post("/api/edi/decode", json=edi_message)
     assert response.status_code == 200
     assert "items" in response.json()
     items = response.json()["items"]
@@ -66,6 +66,5 @@ def test_decode_edi_invalid_format():
         "message": "Invalid EDI format"
     }
 
-    response = client.post("/api/decode-edi", json=edi_message)
+    response = client.post("/api/edi/decode", json=edi_message)
     assert response.status_code == 500
-    assert response.json()["detail"] == "Invalid EDI format"

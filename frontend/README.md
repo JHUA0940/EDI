@@ -10,7 +10,7 @@ This is the frontend application for the EDI Message Handler, built with React a
 - Responsive design that works on all devices
 - Modern Material-UI interface with custom themes
 - Real-time form validation
-- Error handling and user feedback
+- Error handling
 - Integration with backend API services
 
 ## Prerequisites
@@ -54,31 +54,5 @@ frontend/
     └── utils/       # Utility functions
 ```
 
-## API Integration
 
-The frontend communicates with the backend through RESTful API endpoints:
-- POST /api/generate-edi
-- POST /api/decode-edi
 
-```
-
-For test coverage report:
-```bash
-npm test -- --coverage
-```
-
-## Error Handling
-
-The application includes comprehensive error handling for:
-- API communication errors
-- Form validation errors
-- Network issues
-- Invalid user input
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request 

@@ -1,7 +1,10 @@
 # EDI Message Handler
+**🔗 Online Demo: [http://3.25.202.61:8000](http://3.25.202.61:8000)**  
+⚠️ *Please use HTTP only. HTTPS is not supported.*
 
 A full-stack web application for generating and decoding EDI (Electronic Data Interchange) messages for cargo shipments. This application provides a user-friendly interface for managing cargo shipment data and converting it to/from standard EDI formats.
-
+![img.png](page1.png)
+![img_1.png](page2.png)
 ## Project Structure
 
 ```
@@ -11,14 +14,11 @@ A full-stack web application for generating and decoding EDI (Electronic Data In
 │   │   ├── api/         # API routes
 │   │   ├── core/        # Core functionality
 │   │   ├── models/      # Data models
-│   │   ├── schemas/     # Pydantic schemas
 │   │   └── utils/       # Utility functions
 │   └── tests/           # Test files
 └── frontend/            # React frontend
     └── src/             # Source code
         ├── components/  # React components
-        ├── pages/       # Page components
-        ├── services/    # API services
         └── utils/       # Utility functions
 ```
 
@@ -27,11 +27,10 @@ A full-stack web application for generating and decoding EDI (Electronic Data In
 - Generate EDI messages from cargo details
 - Decode existing EDI messages
 - Support for multiple cargo items
-- Modern, responsive UI with Material-UI components
 - Input validation and error handling
-- Clean, maintainable code structure
 - Comprehensive API documentation
-- Real-time validation and feedback
+- Real-time validation
+- Modern, responsive UI
 
 ## Prerequisites
 
@@ -100,12 +99,6 @@ cd backend
 pytest
 ```
 
-### Frontend Tests
-```bash
-cd frontend
-npm test
-```
-
 ## Technologies Used
 
 - Backend:
@@ -121,15 +114,3 @@ npm test
   - Axios
   - React Hooks
   - Jest
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
